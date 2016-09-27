@@ -9,11 +9,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab01_1a", "lab01_1a\lab01_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab01_1b", "lab02_1b\lab02_1b.vcxproj", "{9E2A659F-9330-4C5F-9F5C-AE7F93EA342B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.5_selesort", "1.5_selesort\1.5_selesort.vcxproj", "{0120F18E-F27C-4A2F-BC42-F90F9CD1F00E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.2_selesort", "1.2_selesort\1.2_selesort.vcxproj", "{0120F18E-F27C-4A2F-BC42-F90F9CD1F00E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.5_binsearch", "1.5_binsearch\1.5_binsearch.vcxproj", "{61DC8E9B-27C7-421D-AC80-FCDC7D1B5A22}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.3_binsearch", "1.3_binsearch\1.3_binsearch.vcxproj", "{61DC8E9B-27C7-421D-AC80-FCDC7D1B5A22}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.5_binsearch_r", "1.5_binsearch_r\1.5_binsearch_r.vcxproj", "{C6822903-FB09-4C94-B006-E756CAD884ED}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.4_binsearch_r", "1.4_binsearch_r\1.4_binsearch_r.vcxproj", "{C6822903-FB09-4C94-B006-E756CAD884ED}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.5_permutation", "1.5_permutation\1.5_permutation.vcxproj", "{F27B17C7-95E8-44E8-8838-3A06936267A9}"
 EndProject

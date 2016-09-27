@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="1.5_binsearch.cpp">
+    <ClCompile Include="1.4_binsearch_r.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
