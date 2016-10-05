@@ -32,19 +32,21 @@ int BinarySearch(int *a, const int x, const int n)
 	return -1; // not found
 } // end of BinarySearch
 
+typedef int (*SearchFunc)(int *a, const int x, const int n);
 
-void TimeSearch1() {
+void TimeSearch1(SearchFunc searchFunc) {
 	int a[1001], n[20], k;
 	for (int j = 1; j <= 1000; j++) // initialize a
 		a[j] = j;
 	for (int j = 0; j < 10; j++) { // initialize n
-		n[j] = 10 * j; n[j + 10] = 100 * (j + 1);
+		n[j] = 10 * j;
+		n[j + 10] = 100 * (j + 1);
 	}
 	cout << " n time" << endl; // print header
 	for (int j = 0; j < 20; j++) { // calculate exe time
 		clock_t start, stop;
 		start = clock(); // start time
-		k = SequentialSearch(a, n[j], 0);
+		k = searchFunc(a, n[j], 0);
 		stop = clock(); // stop time
 		double runTime =
 			(double)(stop - start) / CLOCKS_PER_SEC;
@@ -53,7 +55,7 @@ void TimeSearch1() {
 	cout << "Times are in seconds." << endl;
 }
 
-void TimeSearch2() {
+void TimeSearch2(SearchFunc searchFunc) {
 	int a[1001], n[20], k;
 	const long r[20] = { 300000, 300000, 200000,
 		200000, 100000, 100000, 100000, 80000, 80000,
@@ -69,7 +71,7 @@ void TimeSearch2() {
 		clock_t start, stop;
 		start = clock(); // start time
 		for (long b = 1; b <= r[j]; b++)
-			k = SequentialSearch(a, n[j], 0);
+			k = searchFunc(a, n[j], 0);
 		stop = clock(); // stop time
 		double totalTime =
 			(double)(stop - start) / CLOCKS_PER_SEC;
@@ -81,7 +83,9 @@ void TimeSearch2() {
 }
 int main()
 {
-	TimeSearch1();
-	TimeSearch2();
+	TimeSearch1(SequentialSearch);
+	TimeSearch2(SequentialSearch);
+	TimeSearch1(BinarySearch);
+	TimeSearch2(BinarySearch);
 	return 0;
 }
