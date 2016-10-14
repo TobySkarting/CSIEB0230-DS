@@ -1,0 +1,5 @@
+ - Test run the Polyinomialclass and the main program.
+ - Add a member function Polynomial Polynomial::Multiply(Polynomial B) to multiply two polynomials.
+ - You may use the most straightforward implementation.
+ - You may also consider using STL map.
+ - Test your function in the main program.

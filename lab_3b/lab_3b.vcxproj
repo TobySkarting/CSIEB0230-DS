@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{DD7400C0-9627-4691-ABD2-78E28982D6C6}</ProjectGuid>
+    <ProjectGuid>{9DEB6075-11D8-496E-9EED-927E03EDAFA2}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>lab_3a</RootNamespace>
+    <RootNamespace>lab_3b</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -142,10 +142,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="lab_3a.cpp" />
+    <ClInclude Include="SparseMatrix.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Polynomial.h" />
+    <ClCompile Include="lab_3b.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.md" />

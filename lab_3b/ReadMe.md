@@ -1,0 +1,4 @@
+ - Test run the SparseMatrixclass and the main program.
+ - The Addfunction is missing. Implement the Addfunction.
+ - Overload the Addfunction so that it can add a constant.
+ - Test your functions in the main program.
