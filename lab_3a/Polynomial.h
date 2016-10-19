@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <map>
 
 // Tested p + q; 0 + p; p + 0; p + p; 0 + 0; p + (-p)
 enum Boolean { FALSE, TRUE };
@@ -133,17 +134,30 @@ void Polynomial::Add(Term e)
 inline Polynomial Polynomial::Multiply(const Polynomial & B)
 {
 	Polynomial r;
+	std::map<int, int> m;
 
 	ListIterator<Term> Aiter(this->poly);
-	ListIterator<Term> Biter(B.poly);
-
 	Term *p = Aiter.First();
-	Term *q = Biter.First();
+	while (Aiter.NotNull())
+	{
+		ListIterator<Term> Biter(B.poly);
+		Term *q = Biter.First();
+		while (Biter.NotNull())
+		{
+			m[p->exp + q->exp] += (p->coef * q->coef);
+			q = Biter.Next();
+		}
+		p = Aiter.Next();
+	}
 
-
+	Term tmp;
+	for (std::map<int, int>::const_iterator i = m.begin(); i != m.end(); ++i)
+	{
+		tmp.Init(i->second, i->first);
+		r.poly.Attach(tmp);
+	}
 	return r;
 }
-
 
 
 template <class Type>

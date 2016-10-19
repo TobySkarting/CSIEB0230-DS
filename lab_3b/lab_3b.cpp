@@ -1,6 +1,8 @@
 #include <iostream>
 #include "SparseMatrix.h"
 
+using namespace std;
+
 int main()
 {
 	int val[8] = { 15, 22, -15, 11, 3, -6, 91, 28 };
@@ -13,7 +15,11 @@ int main()
 	a.Output();
 	b.Output();
 	SparseMatrix<int> c = a.Multiply(b);
+	cout << "a * b = " << endl;
 	c.Output();
+	SparseMatrix<int> s = a.Add(b);
+	cout << "a + b = " << endl;
+	s.Output();
     return 0;
 }
 

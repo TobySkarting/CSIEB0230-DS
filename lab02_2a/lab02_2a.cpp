@@ -11,7 +11,8 @@ int DivZero(int a, int b, int c)
 	if (c == 0)
 		throw "c can not be zero";
 	return a + b * c + b / c;
-}
+}
+
 int main()
 {
 	try

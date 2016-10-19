@@ -42,7 +42,7 @@ public:
 	row and column value of every
 	triple in \(**\fBthis\fR.
 	*/
-	SparseMatrix Add(SparseMatrix b);
+	SparseMatrix<Item> Add(SparseMatrix<Item> b);
 	/*
 	\fBif\fR the dimensions of @a@ (\(**\fBthis\fR) and @b@ are the same
 	.br
@@ -175,6 +175,13 @@ SparseMatrix<Item> SparseMatrix<Item>::FastTranspose()
 	} // of \fBif\fP
 	return b;
 } // of @FastTranspose@
+
+template<class Item>
+inline SparseMatrix<Item> SparseMatrix<Item>::Add(SparseMatrix<Item> b)
+{
+	
+	return SparseMatrix<Item>();
+}
 
 template <class Item>
 int SparseMatrix<Item>::StoreSum(int sum, int& LastD, int r, int c)
