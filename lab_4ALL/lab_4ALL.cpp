@@ -7,44 +7,67 @@ class String
 public:
 	String(const char *init);
 	String(const char *init, int m);
+	~String();
+	String(const String& org);
+	String& operator=(const String& rhs);
 	// Constructor to initialize *this to string init of length m.
-	bool operator == (String t);
+	bool operator == (const String &t);
 	// If *this string equals t, return true, else return false.
 	bool operator!();
 	// If *this string is empty, return true, else return false.
-	int Length();
+	int Length() const;
 	// Return the length of *this string.
 	String Concat(String t);
 	// Return a string of *this string followed by t.
 	String Substr(int i, int j);
 	// Return the substring of *this starting from position i to i+j-1.
-	int Find(String pat);
-	int FastFind(String pat);
+	int Find(const String &pat);
+	int FastFind(const String &pat);
 	void FailureFunction();
 	// Return the index i where pat resides in *this, -1 if not found.
-	int String::CountSubString(String pat);
-	const char *c_str();
+	int String::CountSubString(const String &pat);
+	const char * c_str() const;
+	//const char *c_str();
 private:
-	char str[8787];
+	char *str;
 	int length;
-	int f[8787];
+	int *f;
 };
 
 String::String(const char *init)
 {
 	length = strlen(init);
+	str = new char[length];
 	strncpy(str, init, length);
+	f = new int[length];
 	FailureFunction();
 }
 
 String::String(const char *init, int m)
 {
-	strncpy(str, init, m);
 	length = m;
+	str = new char[length];
+	strncpy(str, init, length);
+	f = new int[length];
 	FailureFunction();
 }
 
-bool String::operator == (String t)
+String::~String()
+{
+	delete[] str;
+	delete[] f;
+}
+
+String::String(const String &org)
+{
+	this->length = org.length;
+	this->str = new char[this->length];
+	strncpy(this->str, org.str, this->length);
+	f = new int[length];
+	FailureFunction();
+}
+
+bool String::operator == (const String &t)
 {
 	if (this->Length() != t.Length())
 		return false;
@@ -56,12 +79,12 @@ bool String::operator!()
 	return length == 0;
 }
 
-int String::Length()
+int String::Length() const
 {
 	return length;
 }
 
-int String::Find(String pat)
+int String::Find(const String &pat)
 {// Return the index where pat resides,
 	// -1 if not found.
 	for (int start = 0; start <= Length() - pat.Length(); start++) {
@@ -87,8 +110,9 @@ void String::FailureFunction()
 			f[j] = i + 1;
 		else f[j] = -1;
 	}
-}
-int String::FastFind(String pat)
+}
+
+int String::FastFind(const String &pat)
 {// determine whether pat is a substring of *this¡C
 	int posP = 0, posS = 0;
 	int lengthP = pat.Length(), lengthS = Length();
@@ -106,7 +130,7 @@ int String::FastFind(String pat)
 			return posS - lengthP;
 }
 
-int String::CountSubString(String pat)
+int String::CountSubString(const String &pat)
 {// Return the number of occurrences.
 	int count = 0;
 	for (int start = 0; start <= Length() - pat.Length(); start++) {
@@ -120,9 +144,19 @@ int String::CountSubString(String pat)
 	return count;
 }
 
-const char *String::c_str()
+const char *String::c_str() const
 {
 	return str;
+}
+
+String & String::operator=(const String & rhs)
+{
+	this->length = rhs.length;
+	this->str = new char[this->length];
+	strncpy(this->str, rhs.str, this->length);
+	f = new int[length];
+	FailureFunction();
+	return *this;
 }
 
 std::ostream& operator<<(std::ostream &os, String &s)
@@ -132,7 +166,7 @@ std::ostream& operator<<(std::ostream &os, String &s)
 	return os;
 }
 
-bool is_palindrome(String s)
+bool is_palindrome(const String &s)
 {
 	const char *str = s.c_str();
 	int l = 0, r = s.Length() - 1;
@@ -147,7 +181,7 @@ bool is_palindrome(String s)
 }
 
 
-bool is_palindrome(String s, bool ignore_cases)
+bool is_palindrome(const String &s, bool ignore_cases)
 {
 	if (!ignore_cases)
 		return is_palindrome(s);
@@ -167,7 +201,7 @@ bool is_palindrome(String s, bool ignore_cases)
 	return result;
 }
 
-void replace_str(String &text, String from, String to, int k)
+void replace_str(String &text, const String &from, const String &to, int k)
 {
 	int delta = to.Length() - from.Length();
 	int count = 0;
