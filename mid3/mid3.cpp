@@ -18,10 +18,9 @@ void grep(const string &pattern, const string &inFileName, const string &outFile
 		return;
 	}
 
-	char *buffer = new char[256];
-	while (fin.getline(buffer, 256))
+	string line;
+	while (getline(fin, line))
 	{
-		string line(buffer);
 		if (line.find(pattern) != string::npos)
 			fout << line << endl;
 	}
